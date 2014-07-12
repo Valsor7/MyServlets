@@ -1,0 +1,22 @@
+body{
+    background: url("../files/back.jpg") repeat;
+    color: #ffffff;
+}
+a{
+    margin: 500px, auto;
+    color: #fff;
+}
+
+#error {
+    font-weight: bold;
+    margin-left: 20px;
+    color: #d70000;
+
+}
+
+legend{
+    color: darkgray;
+    font-size: 22px;
+}
+
+

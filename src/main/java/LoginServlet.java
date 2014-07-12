@@ -14,11 +14,13 @@ import java.util.List;
  */
 public class LoginServlet extends HttpServlet {
     private MyDBHelper helper;
+    private String status;
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         super.init(servletConfig);
         helper = new MyDBHelper();
+        status = "You entered wrong email or password. Try again";
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,15 +29,16 @@ public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        String s = (String) request.getParameter("email");
         List list = helper.get((String) request.getParameter("email"),
                                (String) request.getParameter("pass"));
-
         if (list.size() == 0){
-            request.getRequestDispatcher("loginFailed.jsp").forward(request, response);
+            request.setAttribute("status", status);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
 
         } else {
+            String user = (String) list.get(0);
             session.setAttribute("list", list);
+            session.setAttribute("user", user);
             request.getRequestDispatcher("profile.jsp").forward(request, response);
         }
     }

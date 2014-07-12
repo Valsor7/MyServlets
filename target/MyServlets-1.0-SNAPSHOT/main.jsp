@@ -10,10 +10,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="MainStyle.css" type="text/css">
+    <link rel="stylesheet" href="css/MainStyle.css" type="text/css">
     <title></title>
 </head>
 <body>
+    <%if (session.getAttribute("user") != null) {%>
+        <label id="user">account: <%=session.getAttribute("user")%></label>
+    <%}
+    %>
 
     <div>
         <a href="registration.jsp">Registration</a>
@@ -27,6 +31,9 @@
                 <input type="submit" value="submit">
             </fieldset>
         </form>
+        <%if (request.getAttribute("status") != null) {%>
+            <label id="error"><%=request.getAttribute("status")%></label>
+        <%}%>
     </div>
 </body>
 </html>

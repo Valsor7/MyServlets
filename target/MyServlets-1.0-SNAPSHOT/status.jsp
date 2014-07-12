@@ -8,13 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="MainStyle.css" type="text/css">
+    <link rel="stylesheet" href="css/MainStyle.css" type="text/css">
     <title></title>
 </head>
 <body>
 
     <h2>Successful registration!</h2>
-    <form action="main.jsp">
+    <form action="index.jsp">
         <input type="submit" value="ok">
     </form>
 </body>
